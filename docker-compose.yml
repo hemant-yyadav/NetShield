@@ -1,0 +1,34 @@
+
+services:
+  proxy:
+    build: ./proxy
+    ports:
+      - "${PROXY_PORT:-8888}:8888"
+    volumes:
+      - netshield-data:/data
+    environment:
+      - DB_PATH=${DB_PATH:-/data/netshield.db}
+
+  api:
+    build: ./api
+    expose:
+      - "8000"
+    volumes:
+      - netshield-data:/data
+      - vault-data:/vault
+      - ./schema.sql:/app/schema.sql:ro
+    depends_on:
+      - proxy
+    env_file:
+      - .env
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    depends_on:
+      - api
+
+volumes:
+  netshield-data:
+  vault-data:
