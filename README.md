@@ -2,7 +2,7 @@
 
 NetShield is a containerized network-security dashboard and proxy. It filters HTTP/HTTPS traffic against a shared threat list, records traffic activity, provides a live React dashboard, and includes an encrypted file vault with expiring one-time share links.
 
-> This is a lab/prototype project. Review and harden its defaults before deploying it to a real network or storing sensitive data.
+<!-- > This is a lab/prototype project. Review and harden its defaults before deploying it to a real network or storing sensitive data. -->
 
 ## What is included
 
@@ -19,7 +19,7 @@ NetShield is a containerized network-security dashboard and proxy. It filters HT
 - Docker Desktop with Docker Compose
 - A free host port for each of `3000` and `8888`
 
-Create the deployment configuration from the example, then replace the placeholder secrets. Do not commit `.env`.
+Create the deployment configuration from the example, then replace the placeholder secrets.
 
 ```env
 FRONTEND_PORT=3000
