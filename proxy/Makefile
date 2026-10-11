@@ -1,11 +1,11 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -std=c11 -D_POSIX_C_SOURCE=200112L -Wall -Wextra -g
 LIBS = -lsqlite3
 
 all: proxy
 
-proxy: main.c proxy_parse.c
-	$(CC) $(CFLAGS) -o proxy main.c proxy_parse.c $(LIBS)
+proxy: main.c
+	$(CC) $(CFLAGS) -o proxy main.c $(LIBS) -pthread
 
 clean:
 	rm -f proxy
